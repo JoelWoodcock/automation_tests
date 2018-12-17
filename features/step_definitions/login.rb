@@ -10,11 +10,11 @@ Given("the login page is open") do
 end
 
 When("I enter the email") do
-  find('input#login_email').set 'ostratulat+test000@bookingbug.com'
+  find('input#login_email').set 'qa+automation@bookingbug.com'
 end
 
 When("I enter the password") do
-  find('input#login_password').set 'Booking321'
+  find('input#login_password').set 'Automation123'
 end
 
 When("I click login") do
