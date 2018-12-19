@@ -1,10 +1,10 @@
 Given("I am logged in") do
-  step "I open the login page"
-  step "the login page is open"
-  step "I enter the email"
-  step "I enter the password"
-  step "I click login"
-  step "I am successfully logged in"
+  step 'I open the login page'
+  step 'the login page is open'
+  step 'I enter "qa+automation@bookingbug.com" into the email field'
+  step 'I enter "Automation123" into the password field'
+  step 'I click "Login"'
+  step 'I am successfully logged in'
 end
 
 Given("I am on the calendar page") do
@@ -27,11 +27,19 @@ end
 
 Given("fill in the New Customer fields") do
   expect(page).to have_css('a', text: 'New Customer')
-  find('input#record_email').set 'ostratulat+test@bookingbug.com'
-  find('input#record_first_name').set 'oana'
-  find('input#record_last_name').set 'test'
+  newmember = member
+  find('input#record_email').set newmember[:email]
+  find('input#record_first_name').set newmember[:first_name]
+  find('input#record_last_name').set newmember[:last_name]
   find('input#record_consent').check
+end
 
+  def member
+    {
+    "email": Faker::Internet.email,
+    "first_name": Faker::Name.first_name,
+    "last_name": Faker::Name.last_name
+    }
 end
 
 Given("I click Next button") do
