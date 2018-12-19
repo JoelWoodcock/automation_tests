@@ -1,5 +1,5 @@
 Given("I open the login page") do
-  visit(ENV['URL'])
+  visit url 
 end
 
 Given("the login page is open") do
