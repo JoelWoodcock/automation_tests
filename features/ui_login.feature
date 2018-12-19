@@ -3,45 +3,45 @@ Feature: Logging in
 Scenario: Login with valid credentials
   Given I open the login page
   And the login page is open
-  When I enter the email
-  And I enter the password
-  And I click login
+  When I enter "qa+automation@bookingbug.com" into the email field
+  And I enter "Automation123" into the password field
+  And I click "Login"
   Then I am successfully logged in
 
 Scenario: Fail to login with invalid credentials
   Given I open the login page
   And the login page is open
-  When I enter a wrong email
-  And I enter a wrong password
-  And I click login
-  Then I am not logged in
+  When I enter "wrong@bookingbug.com" into the email field
+  And I enter "wrong" into the password field
+  And I click "Login"
+  Then "Failed to log in, please try again" is displayed
 
 Scenario: Fail to login with invalid email
   Given I open the login page
   And the login page is open
-  When I enter an invalid email
-  And I enter a valid password
-  And I click login
-  Then I am not logged in
+  When I enter "wrong@bookingbug.com" into the email field
+  And I enter "Automation123" into the password field
+  And I click "Login"
+  Then "Failed to log in, please try again" is displayed
 
 Scenario: Fail to login with invalid password
   Given I open the login page
   And the login page is open
-  When I enter a valid email
-  And I enter an invalid password
-  And I click login
-  Then I am not logged in
+  When I enter "qa+automation@bookingbug.com" into the email field
+  And I enter "wrong" into the password field
+  And I click "Login"
+  Then "Failed to log in, please try again" is displayed
 
 Scenario: Fail to login with just the email
   Given I open the login page
   And the login page is open
-  When I enter a valid email
-  And I click login
-  Then I am not logged in
+  When I enter "qa+automation@bookingbug.com" into the email field
+  And I click "Login"
+  Then "Failed to log in, please try again" is displayed
 
 Scenario: Fail to login with just the password
   Given I open the login page
   And the login page is open
-  When I enter a valid password
-  And I click login
-  Then I am not logged in
+  When I enter "Automation123" into the password field
+  And I click "Login"
+  Then "Failed to log in, please try again" is displayed
